@@ -14,7 +14,7 @@ class TodoViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         # BUG 3: Permission Bug - Missing user filter, shows all todos instead of user's todos
         # Should be: return Todo.objects.filter(user=self.request.user)
-        return Todo.objects.filter(user=self.request.user)
+        return Todo.objects.all()
     
     def perform_create(self, serializer):
         # This part is correct - saves todo with current user
